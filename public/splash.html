@@ -5,90 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شاشة البداية</title>
     <style>
-        /* إعدادات الصفحة */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #0b0b0b; /* خلفية داكنة جداً */
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* حاوية الشعار - تم تصغير الحجم */
-        .logo-wrapper {
-            margin-bottom: 45px; /* مسافة معتبرة تحت الشعار */
-        }
-
-        .logo-wrapper img {
-            width: 65px;  /* الحجم الجديد المصغر */
-            height: 65px; /* الحجم الجديد المصغر */
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        /* حاوية النقاط */
-        .dots-container {
-            display: flex;
-            gap: 10px;
-        }
-
-        /* النقطة في حالتها العادية */
-        .dot {
-            width: 8px;
-            height: 8px;
-            background-color: #333; /* لون رمادي مطفي */
-            border-radius: 50%;
-            transition: background-color 0.15s ease;
-        }
-
-        /* النقطة عندما تمتلئ (أبيض صلب) */
-        .dot.active {
-            background-color: #ffffff;
-        }
+        body { margin: 0; padding: 0; background-color: #0b0b0b; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; }
+        .logo-wrapper { margin-bottom: 45px; }
+        .logo-wrapper img { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; }
+        .dots-container { display: flex; gap: 10px; }
+        .dot { width: 8px; height: 8px; background-color: #333; border-radius: 50%; transition: background-color 0.15s ease; }
+        .dot.active { background-color: #ffffff; }
     </style>
 </head>
 <body>
-
     <div class="logo-wrapper">
         <img src="https://i.pinimg.com/736x/56/05/3c/56053cc734c56fd893522013aa3cc69f.jpg" alt="Logo">
     </div>
-
     <div class="dots-container">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
     </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const dots = document.querySelectorAll('.dot');
             let index = 0;
-
             function fillNextDot() {
                 if (index < dots.length) {
                     dots[index].classList.add('active');
                     index++;
-                    
-                    // توقيت عشوائي بسيط لتبدو وكأنها تتحقق من الاتصال
                     let delay = Math.floor(Math.random() * 400) + 200;
                     setTimeout(fillNextDot, delay);
                 } else {
-                    // الانتقال للرئيسية بعد اكتمال النقاط بنصف ثانية
-                    setTimeout(() => {
-                        window.location.href = 'login.html'; 
-                    }, 500);
+                    setTimeout(() => { window.location.href = '/login.html'; }, 500);
                 }
             }
-
             fillNextDot();
         });
     </script>
-
 </body>
 </html>
